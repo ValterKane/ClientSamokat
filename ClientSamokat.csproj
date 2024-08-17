@@ -1,0 +1,116 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Icons\icons8-bicycle-lock-50.png" />
+    <None Remove="Icons\icons8-exit-door-64.png" />
+    <None Remove="Icons\icons8-microsoft-excel-50.png" />
+    <None Remove="Icons\icons8-microsoft-word-50.png" />
+    <None Remove="Icons\icons8-pdf-50.png" />
+    <None Remove="Icons\icons8-аватар-64.png" />
+    <None Remove="Icons\icons8-велосипед-64.png" />
+    <None Remove="Icons\icons8-войти-50.png" />
+    <None Remove="Icons\icons8-добавить-свойство-50.png" />
+    <None Remove="Icons\icons8-закрыть-окно-50.png" />
+    <None Remove="Icons\icons8-закрыть-окно-80.png" />
+    <None Remove="Icons\icons8-карта-50.png" />
+    <None Remove="Icons\icons8-ошибка-50.png" />
+    <None Remove="Icons\icons8-печать-50.png" />
+    <None Remove="Icons\icons8-плюс-2-50.png" />
+    <None Remove="Icons\icons8-склад-60.png" />
+    <None Remove="Icons\icons8-список-ингредиентов-50.png" />
+    <None Remove="Logos\png-klev-club-ez5b-p-samokat-logotip-png-3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\icons8-bicycle-lock-50.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-exit-door-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-microsoft-excel-50.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-microsoft-word-50.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-pdf-50.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-аватар-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-велосипед-64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-войти-50.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-добавить-свойство-50.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-закрыть-окно-50.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-закрыть-окно-80.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-карта-50.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-ошибка-50.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-печать-50.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-плюс-2-50.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-склад-60.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\icons8-список-ингредиентов-50.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Logos\png-klev-club-ez5b-p-samokat-logotip-png-3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Model\Bicycle.cs">
+      <CustomToolNamespace></CustomToolNamespace>
+    </Compile>
+    <Compile Update="Model\BicyclesLock.cs">
+      <CustomToolNamespace></CustomToolNamespace>
+    </Compile>
+    <Compile Update="Model\DataContext.cs">
+      <CustomToolNamespace></CustomToolNamespace>
+    </Compile>
+    <Compile Update="Model\Journal.cs">
+      <CustomToolNamespace></CustomToolNamespace>
+    </Compile>
+    <Compile Update="Model\Occ.cs">
+      <CustomToolNamespace></CustomToolNamespace>
+    </Compile>
+    <Compile Update="Model\StatusTable.cs">
+      <CustomToolNamespace></CustomToolNamespace>
+    </Compile>
+  </ItemGroup>
+
+</Project>

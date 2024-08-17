@@ -1,0 +1,114 @@
+﻿<Window x:Class="ClientSamokat.View.BicycleLocksView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientSamokat.View"
+        mc:Ignorable="d"
+        Title="BicycleLocksView" Height="250" MouseDown="Window_MouseDown" Width="400" WindowStartupLocation="CenterOwner" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="Samokat_Color" Color="#FF335F"/>
+
+        <Style TargetType="{x:Type Button}" x:Name="ButtonStyle">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Samokat_Color}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"
+                                CornerRadius="10">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property ="Opacity" Value="0.5"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type DatePicker}" x:Name="DPStyle">
+            <Setter Property="Width" Value="310"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Samokat_Color}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}" x:Name="TextBlockStyle">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="0 0 0 10"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}" x:Name="TextBoxStyle">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="310"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border x:Name="PART_ContentHost" CornerRadius="10" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" BorderBrush="{StaticResource Samokat_Color}" BorderThickness="2">
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="0.5"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+    </Window.Resources>
+
+
+    <Border Background="White"  BorderBrush="{StaticResource Samokat_Color}" BorderThickness="2" CornerRadius="10">
+        <Grid Margin="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Регистрация велозамка" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" Foreground="Black" FontSize="25"/>
+
+            <Grid Grid.Row="1" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" VerticalAlignment="Center">
+                    <TextBlock Text="Укажите номер замка:"/>
+                    <TextBox Text="{Binding LockId, Mode=TwoWay}" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Button Grid.Column="0" Command="{Binding AddNew}" CommandParameter=" " Width="150">
+                        <Image Source="/Icons/icons8-добавить-свойство-50.png" Width="50"/>
+                    </Button>
+
+                    <Button Grid.Column="1" Click="Button_Click" Width="150">
+                        <Image Source="/Icons/icons8-закрыть-окно-50.png" />
+
+                    </Button>
+                </StackPanel>
+            </Grid>
+            
+        </Grid>
+    </Border>
+</Window>

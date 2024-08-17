@@ -1,0 +1,70 @@
+﻿<Window x:Class="ClientSamokat.View.PopUpCourierView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientSamokat.View"
+        xmlns:Conv ="clr-namespace:ClientSamokat.Converters"
+        mc:Ignorable="d"
+        Title="PopUpCourierView" MouseDown="Window_MouseDown" Height="350" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="Samokat_Color" Color="#FF335F"/>
+
+        <Conv:BoolToColorConverter x:Key="ColorStatusConverter"/>
+        <Conv:StatToTextConverter x:Key="StatToTextConverter"/>
+    </Window.Resources>
+    
+    <Border CornerRadius="10" Background="White" BorderThickness="2" BorderBrush="{StaticResource Samokat_Color}">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/> <!--1-->
+                <RowDefinition Height="40"/> <!--6-->
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <Label Content="Карточка курьера" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+                <Border BorderBrush="{StaticResource Samokat_Color}" BorderThickness="0.5" CornerRadius="10" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Height="20" Width="auto">
+                    <TextBlock Text="{Binding Object.PersonId, StringFormat={}№ {0}}" Width="150" TextAlignment="Center" Foreground="Black" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 20 0 0">
+                <TextBlock Text="Персональные данные:" Width="250" FontSize="16" Height="30" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Height="20">
+                    <TextBlock Text="ФИО: " FontWeight="Bold" FontSize="14"/>
+                    <TextBlock DataContext="{Binding Object.Person}" FontSize="14">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1} {2}">
+                                <Binding Path="FirstName"/>
+                                <Binding Path="SecondName"/>
+                                <Binding Path="LastName"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Height="20">
+                    <TextBlock Text="Возраст: " FontWeight="Bold" FontSize="14"/>
+                    <TextBlock Text="{Binding Object.Person.Age}" FontSize="14"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Height="20">
+                    <TextBlock Text="Номер телефона: " FontWeight="Bold" FontSize="14"/>
+                    <TextBlock Text="{Binding Object.PhoneNumber}" FontSize="14"/>
+                </StackPanel>
+
+                <TextBlock Text="Статус курьера" Width="250" FontSize="16" Height="30" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 20 0 0"/>
+                <Border BorderBrush="Black" BorderThickness="2" Background="{Binding Object.Stat, Converter={StaticResource ColorStatusConverter}}" Height="35" CornerRadius="20">
+                    <TextBlock Text="{Binding Object.Stat, Converter={StaticResource StatToTextConverter}}" Foreground="White" TextAlignment="Center" FontSize="20"/>
+                </Border>
+            </StackPanel>
+
+            <Button Background="{StaticResource Samokat_Color}" Grid.Row="1" Click="Button_Click">
+                <TextBlock Text="Закрыть" FontSize="20" FontWeight="Black" Foreground="White"/>
+            </Button>
+            
+        </Grid>
+    </Border>
+</Window>

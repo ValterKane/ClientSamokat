@@ -1,0 +1,121 @@
+﻿<Window x:Class="ClientSamokat.View.AutorizeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        x:Name="This"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientSamokat.View"
+        xmlns:vms="clr-namespace:ClientSamokat.ViewModel" 
+        xmlns:components="clr-namespace:ClientSamokat.Components"
+        mc:Ignorable="d" MouseDown="Window_MouseDown"
+        Title="MainWindow" Height="500" Width="400" WindowStyle="None" Background="Transparent" AllowsTransparency="True">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="Samokat_Color" Color="#FF335F"/>
+
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="Background" Value="white"/>
+            <Setter Property="Width" Value="170"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Samokat_Color}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+            <Setter Property="Margin" Value="5 0 0 0"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder" CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="OpacityMask" Value="{StaticResource Samokat_Color}"/>
+                    <Setter Property="Opacity" Value="0.1"/>
+                </Trigger>
+                
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="OpacityMask" Value="{StaticResource Samokat_Color}"/>
+                    <Setter Property="Opacity" Value="0.05"/>
+                </Trigger>
+
+                <DataTrigger Binding="{Binding ElementName=PasswordTB, Path=Password.Lengt}" Value="0">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+
+            
+        </Style>
+
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="white"/>
+            <Setter Property="Width" Value="350"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Samokat_Color}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+            <Setter Property="Margin" Value="5 0 0 0"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="OpacityMask" Value="{StaticResource Samokat_Color}"/>
+                    <Setter Property="Opacity" Value="0.2"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+        
+
+    </Window.Resources>
+    
+    <Border Background="White" CornerRadius="30" BorderThickness="5" BorderBrush="{StaticResource Samokat_Color}">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Image Grid.Row="0" Source="/Logos/png-klev-club-ez5b-p-samokat-logotip-png-3.png" />
+
+
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="Идентификатор" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                <TextBox Style="{StaticResource TextBoxStyle}" Margin="5" Text="{Binding Id, Mode=TwoWay}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2">
+                <TextBlock Text="Пароль" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                <PasswordBox x:Name="PasswordTB" BorderBrush="{StaticResource Samokat_Color}" Width="350" Height="50" Grid.Row="2" Margin="5" FontSize="14" PasswordChar="*" PasswordChanged="PasswordTB_PasswordChanged" FontFamily="Arial Black"
+VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderThickness="2"/>
+            </StackPanel>
+
+
+           
+
+            <StackPanel HorizontalAlignment="Center" Grid.Row="4" Orientation="Horizontal">
+                <Button Style="{DynamicResource Button}" Click="Button_Click">
+                    <Image Source="/Icons/icons8-exit-door-64.png" Width="45" />
+                </Button>
+                <Button Style="{DynamicResource Button}" Command="{Binding AutorizeCmd}" CommandParameter="{Binding ElementName=This, Path=HashForBind}">
+                    <Image Source="/Icons/icons8-войти-50.png" Width="45"/>
+                </Button>
+            </StackPanel>
+            
+
+        </Grid>
+    </Border>
+    
+</Window>
